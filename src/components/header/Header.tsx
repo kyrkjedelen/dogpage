@@ -13,10 +13,8 @@ const Header:React.FC = () => {
             <div id="navbar">
                 <Link to="/">home</Link>
                 <Link to ="/about">about us</Link>
-                <a href="#facts">dog facts</a>
-                <a href="#breeds">breeds</a>
-                <a href="#favourites">favourites</a>
-                <a href="#contact">contact</a>
+                <Link to ="/breeds">breeds</Link>
+                <Link to ="/favourites">favourites</Link>
             </div>
         </div>
     </>
