@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import DogImage from "./dog-image/DogImage.tsx";
-import Button from "./button/Button.tsx";
 import Factbox from "./factbox/Factbox.tsx";
 
 import './DogGenerator.css'
@@ -31,10 +29,10 @@ const DogGenerator:React.FC  = () => {
     }, []);
     return <>
         <div className="dog-generator">
-            <DogImage imageUrl={dogUrl} />
+            <img src={dogUrl} />
             <div>
                 <Factbox fact={dogFact} />
-                <Button updateFunction={updateAll} />
+                <button onClick={updateAll}>Trykk her for å se mer dog.</button>
             </div>
         </div>
     </>;
