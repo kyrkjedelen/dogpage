@@ -18,18 +18,20 @@ const DogGenerator:React.FC  = () => {
     const [breedInputValue, setBreedInputValue] = useState<string>("");
     const [dogBreedUrl, setDogBreedUrl] = useState<string>("");
     const [dogUrl, setDogUrl] = useState<string>("");
-    const [noBreedError, setNoBreedError] = useState<string>("");
+    const [error, setError] = useState<string>("");
 
     const updateDog = async () => {
-        const response = await fetch(`https://dog.ceo/api/breed/${dogBreedUrl}/images/random`)
-        const json = await response.json();
-
-        if (json.code === 404) {
+        try {
+            const response = await fetch(`https://dog.ceo/api/breed/${dogBreedUrl}/images/random`)
+            const json = await response.json();
+            if (json.code === 404 || !json) {
+                throw `The breed ${breedInputValue} doesn't exist.`
+            } else {
+                setDogUrl(json.message);
+            }
+        } catch(e) {
             setDogUrl("")
-            setNoBreedError(`The breed ${breedInputValue} doesn't exist.`)
-        } else {
-            setDogUrl(json.message);
-            setNoBreedError("")
+            setError(String(e))
         }
     }
     const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -40,6 +42,7 @@ const DogGenerator:React.FC  = () => {
       };
     const updateAll = () => {
         console.log("Click!")
+        setError("")
         if (breedInputValue.trim() !== "") {
             updateDog();
         }
@@ -54,8 +57,8 @@ const DogGenerator:React.FC  = () => {
             { dogUrl !== "" &&
                 <img src={dogUrl} />
             }
-            { noBreedError !== "" &&
-                <p>{noBreedError}</p>
+            { error !== "" &&
+                <p>{error}</p>
             }
         </div>
     </>;
