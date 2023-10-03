@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import DogImage from "./dog-image/DogImage.tsx";
 import Button from "./button/Button.tsx";
+import LikeButton from "./button/LikeButton.tsx"
 import Factbox from "./factbox/Factbox.tsx";
 
 import './DogGenerator.css'
@@ -35,6 +36,7 @@ const DogGenerator:React.FC  = () => {
             <div>
                 <Factbox fact={dogFact} />
                 <Button updateFunction={updateAll} />
+                <LikeButton imageURL={dogUrl} />
             </div>
         </div>
     </>;
