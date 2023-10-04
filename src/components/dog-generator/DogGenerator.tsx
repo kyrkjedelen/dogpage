@@ -32,7 +32,7 @@ const DogGenerator:React.FC  = () => {
     }, []);
     return <>
         <div className="dog-generator">
-            <DogImage imageUrl={dogUrl} />
+            <DogImage imageUrl={dogUrl} style={{}}/>
             <div>
                 <Factbox fact={dogFact} />
                 <Button updateFunction={updateAll} />
