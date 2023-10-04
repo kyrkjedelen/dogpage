@@ -1,0 +1,11 @@
+.fav {
+    text-align: left;
+    position: fixed;
+    flex-direction: row;
+    width: 20px;
+}
+
+.fav h1 {
+    text-align: left;
+    font-size: x-small;
+}

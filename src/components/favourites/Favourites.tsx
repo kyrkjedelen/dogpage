@@ -1,6 +1,6 @@
 import React from "react";
 import DogImage from "../dog-generator/dog-image/DogImage.tsx";
-//import LikeButton from "/dog-generator/button/LikeButton.tsx";
+import "./Favourites.css"
 
 
 const Favourites:React.FC = () => {
@@ -9,10 +9,13 @@ const Favourites:React.FC = () => {
 
     return <>
         <main style={{ color: "black" }}>
-            <h1>Favorites</h1>
+            <div className="dogImage">
+            <h1 >Favorites</h1>
             {dogList.map((imageUrl: string, index: number) => (
-                <DogImage key={index} imageUrl={imageUrl} />
+                <DogImage key={index} imageUrl={imageUrl} 
+                style={{ width: "200px", height: "auto", margin: "25px 400px"}} />
             ))}
+            </div>
         </main>
     </>
 }
