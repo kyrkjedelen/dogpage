@@ -34,9 +34,9 @@ const clearImages = () => {
         <button 
             id="like-button"
             onClick={likeDog}
-            >Lik dog
+            >Like dog
         </button>
-        <button onClick={clearImages}>Fjern alle favoritter</button>
+        <button onClick={clearImages}>Remove all saved dogs</button>
         </>
     );
 }
