@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ updateFunction }) => {
     }
 
     return <>
-        <button id="my-button" onClick={handleClick}>Trykk her for å se mer dog.</button>
+        <button id="my-button" onClick={handleClick}>Click here to see more dog</button>
     </>
 }
 

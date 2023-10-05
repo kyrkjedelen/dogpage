@@ -1,0 +1,17 @@
+#removeDog {
+    transition-duration: 0.4s;
+    outline: none;
+    margin-bottom: 40px;
+  }
+  
+  #removeDog:hover {
+    background-color: pink;
+    color: white;
+  }
+
+  .dogImageIteam{
+    display: flex;
+    align-items: center;
+  }
+
+
