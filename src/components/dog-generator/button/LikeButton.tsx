@@ -5,7 +5,6 @@ interface Props {
 }
 
 const LikeButton: React.FC<Props> = ({imageURL}) => {
-    const [isActive, setIsActive] = useState(false);
 
     const [dogList, setList] = useState<string[]>([]);
     useEffect(() => {
@@ -18,14 +17,10 @@ const LikeButton: React.FC<Props> = ({imageURL}) => {
 const likeDog = () => {
     if (imageURL){
         if (!dogList.includes(imageURL)){
-            //setIsActive(true);
             localStorage.clear();
             const updateList = [...dogList, imageURL];
             setList(updateList);
             localStorage.setItem("dog", JSON.stringify(updateList));
-        }
-        else {
-            setIsActive(false);
         }
     }
 };
@@ -39,7 +34,6 @@ const clearImages = () => {
         <button 
             id="like-button"
             onClick={likeDog}
-            className={isActive ? "active" : ""}
             >Lik dog
         </button>
         <button onClick={clearImages}>Fjern alle favoritter</button>
