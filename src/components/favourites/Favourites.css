@@ -1,11 +1,17 @@
-.fav {
-    text-align: left;
-    position: fixed;
-    flex-direction: row;
-    width: 20px;
-}
+#removeDog {
+    transition-duration: 0.4s;
+    outline: none;
+    margin-bottom: 40px;
+  }
+  
+  #removeDog:hover {
+    background-color: pink;
+    color: white;
+  }
 
-.fav h1 {
-    text-align: left;
-    font-size: x-small;
-}
+  .dogImageIteam{
+    display: flex;
+    align-items: center;
+  }
+
+
