@@ -1,22 +1,32 @@
 .dog-generator {
-    height: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+    min-height: calc(100vh - 130px - 90px);
 }
-.dog-generator div, .dog-generator img {
-    height: 100%;
-    max-height: 40vh;
+
+.dog-generator img {
+    width: 50%;
+    max-width: 100vw;
 }
+
 .dog-generator div {
+    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    text-align: justify;
     align-items: center;
 }
-.dog-generator div * {
-    width: 100%;
-    height: 100%;
+
+@media (max-width: 900px) {
+    .dog-generator img {
+        width: auto;
+        height: 50vh;
+    }
+    .dog-generator {
+        flex-direction: column;
+    }    
 }
