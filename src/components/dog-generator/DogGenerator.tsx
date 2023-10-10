@@ -4,6 +4,7 @@ import Button from "./button/Button.tsx";
 import Factbox from "./factbox/Factbox.tsx";
 
 import './DogGenerator.css'
+import LikeButton from "./button/LikeButton.tsx";
 
 const DogGenerator:React.FC  = () => {
     const [dogUrl, setDogUrl] = useState<string>("");
@@ -35,6 +36,7 @@ const DogGenerator:React.FC  = () => {
             <div>
                 <Factbox fact={dogFact} />
                 <Button updateFunction={updateAll} />
+                <LikeButton imageURL={dogUrl} />
             </div>
         </div>
     </>;
