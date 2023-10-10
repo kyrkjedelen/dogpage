@@ -1,0 +1,6 @@
+.breed-generator {
+    display: flex;
+}
+.breed-generator img {
+    height: 50vh;
+}
