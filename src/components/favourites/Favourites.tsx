@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import DogImage from "../dog-generator/dog-image/DogImage.tsx";
 import "./Favourites.css"
+import RemoveAllButton from "../dog-generator/button/RemoveAllButton.tsx";
 
 
 const Favourites:React.FC = () => {
     const [dogList, setDogList] = useState<string[]>([]);
 
     useEffect(() => {
-    const dogListJSON = localStorage.getItem("dog");
-    const initialDogList = dogListJSON ? JSON.parse(dogListJSON) : [];
-    setDogList(initialDogList);
+        const dogListJSON = localStorage.getItem("dog");
+        const initialDogList = dogListJSON ? JSON.parse(dogListJSON) : [];
+        setDogList(initialDogList);
     }, []);
 
     const removeDog = (index: number) => {
@@ -17,14 +18,17 @@ const Favourites:React.FC = () => {
         updatedDogList.splice(index,1);
         setDogList(updatedDogList);
         localStorage.setItem("dog", JSON.stringify(updatedDogList));
-            
-        
+    };
+
+    const removeAllDogs = () => {
+        setDogList([]);
+        localStorage.removeItem("dog");
     };
     
-
     return <>
         <main style={{ color: "black" }}>
             <h1 >Favorites</h1>
+            <RemoveAllButton removeAllDogs={removeAllDogs}/>
             {dogList.map((imageUrl: string, index: number) => (
                 <div className="dogImageItem">
                     <DogImage
@@ -37,7 +41,7 @@ const Favourites:React.FC = () => {
                         }} 
                     />
                     <button id="removeDog" onClick={() => removeDog(index)}>
-                            Remove dog
+                        Remove dog
                     </button>
                 </div>
             ))}
