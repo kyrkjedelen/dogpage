@@ -53,14 +53,16 @@ const DogGenerator:React.FC  = () => {
     }, []);
     return <>
         <div className="breed-generator" >
-            { dogUrl !== "" &&
-                <img src={dogUrl} />
-            }
-            { error !== "" &&
-                <p>{error}</p>
-            }
-            <div className="buttons">
+            <div>
+                { dogUrl !== "" &&
+                    <img src={dogUrl} />
+                }
+                { error !== "" &&
+                    <p>{error}</p>
+                }
                 <input type="text" onChange={handleInputChange}/>
+            </div>
+            <div className="buttons">
                 <button onClick={updateAll}>Click here to see more dog</button>
                 <LikeButton imageURL={dogUrl} />
             </div>
