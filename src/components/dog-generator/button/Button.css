@@ -31,8 +31,14 @@
     color: red;
 }
 
-#remove-button {
+.remove-dogs-button {
     padding: 1rem;
     border-radius: 1rem;
     font-size: 20px;
+    transition: 0.1s;
+}
+.remove-dogs-button:hover {
+    transform: translateX(-5px) translateY(-5px);
+    color: rgb(115, 115, 115);
+    box-shadow: 5px 5px 15px rgb(73, 73, 73);
 }

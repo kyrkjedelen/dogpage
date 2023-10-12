@@ -9,7 +9,7 @@ const Header:React.FC = () => {
     return <>
         <div id = 'header'>
             <Link to="/"><img id="logo" src="https://dog.ceo/img/dog-api-logo.svg" alt="logo" /></Link>
-            <h1 id='title'>Random Dog of the Day</h1>
+            <Link to="/"><h1 id='title'>Random Dog of the Day</h1></Link>
             <div id="navbar">
                 <Link to="/">home</Link>
                 <Link to ="/about">about us</Link>

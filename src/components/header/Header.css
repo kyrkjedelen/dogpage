@@ -5,7 +5,6 @@
     display: flex;
     align-items: center;
     font-family: "Trebuchet MS";
-    border: #15141A;
   }
 
 #header img {
@@ -34,6 +33,7 @@
 @media (max-width: 900px) {
     #header {
         flex-direction: column;
+        padding-top: 1rem;
     }
     #header img {
         margin-right: 0;
