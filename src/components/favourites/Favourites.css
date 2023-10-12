@@ -11,7 +11,8 @@
 
   .dogImageIteam{
     display: flex;
-    align-items: center;
   }
 
-
+  .main {
+    min-height: calc(100vh - 130px - 120px);
+}

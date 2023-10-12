@@ -16,14 +16,12 @@ const Favourites:React.FC = () => {
         const updatedDogList = [...dogList];
         updatedDogList.splice(index,1);
         setDogList(updatedDogList);
-        localStorage.setItem("dog", JSON.stringify(updatedDogList));
-            
-        
+        localStorage.setItem("dog", JSON.stringify(updatedDogList));    
     };
     
 
     return <>
-        <main style={{ color: "black" }}>
+        <main className="main" style={{ color: "black" }}>
             <h1 >Favorites</h1>
             {dogList.map((imageUrl: string, index: number) => (
                 <div className="dogImageItem">

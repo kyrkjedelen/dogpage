@@ -51,16 +51,16 @@ const DogGenerator:React.FC  = () => {
         updateAll();
     }, []);
     return <>
-        <div className="breed-generator">
-            <input type="text" onChange={handleInputChange}/>
-            <button onClick={updateAll}>Trykk her for å se mer dog.</button>
-            { dogUrl !== "" &&
-                <img src={dogUrl} />
-            }
-            { error !== "" &&
-                <p>{error}</p>
-            }
+    <div className="breed-generator">
+        <div className="input-container">
+            <input id="breed-input" type="text" onChange={handleInputChange} />
+            <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
+            {error !== "" && <p>{error}</p>}
         </div>
+        {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
+    </div>
     </>;
 }
 export default DogGenerator
+
+
