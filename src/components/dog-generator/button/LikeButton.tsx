@@ -36,7 +36,7 @@ const clearImages = () => {
             onClick={likeDog}
             >Like dog
         </button>
-        <button onClick={clearImages}>Remove all saved dogs</button>
+        <button id="remove-button" onClick={clearImages}>Remove all saved dogs</button>
         </>
     );
 }

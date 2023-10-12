@@ -1,25 +1,24 @@
 #my-button {
     padding: 1rem;
     text-align: center;
-
-}
-
-#my-button {
-    border: 1px solid blue;
     border-radius: 1rem;
+    font-size: 20px;
 }
 
+#my-button:hover{
+    background-color: rgb(8, 158, 8);
+    border-color: rgb(8, 158, 8);
+}
 
 #like-button{
     font-size: 20px;
-    color: black;
+    color: rgb(255, 255, 255);
     cursor: pointer;
-    padding: 0;
-    margin: 0;
+    padding: 1rem;
+    border-radius: 1rem;
 }
 #like-button::before{
     content: "\2665";
-    font-size: 24px;
     vertical-align: middle;
     margin-right: 5px;
 }
@@ -30,4 +29,10 @@
 
 #like-button.active {
     color: red;
+}
+
+#remove-button {
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 20px;
 }

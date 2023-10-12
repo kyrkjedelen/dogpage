@@ -8,7 +8,7 @@ import './Header.css';
 const Header:React.FC = () => {
     return <>
         <div id = 'header'>
-            <img id="logo" src="https://dog.ceo/img/dog-api-logo.svg" alt="logo" />
+            <Link to="/"><img id="logo" src="https://dog.ceo/img/dog-api-logo.svg" alt="logo" /></Link>
             <h1 id='title'>Random Dog of the Day</h1>
             <div id="navbar">
                 <Link to="/">home</Link>
