@@ -1,43 +1,59 @@
-import React, { useState, useEffect } from "react";
 import DogImage from "./dog-image/DogImage.tsx";
 import Button from "./button/Button.tsx";
 import Factbox from "./factbox/Factbox.tsx";
 
 import './DogGenerator.css'
 import LikeButton from "./button/LikeButton.tsx";
+import { useQuery, useQueryClient } from '@tanstack/react-query'
+
+const fetchFact = async () => {
+    const response = await fetch("https://dogapi.dog/api/v2/facts?limit=1")
+    const json = await response.json();
+    return json.data[0].attributes.body;
+}
+const fetchDog = async () => {
+    const response = await fetch("https://dog.ceo/api/breeds/image/random")
+    const json = await response.json();
+    return json.message;
+}
 
 const DogGenerator:React.FC  = () => {
-    const [dogUrl, setDogUrl] = useState<string>("");
-    const [dogFact, setDogFact] = useState<string>("");
+    const factResult = useQuery({ queryKey: ['fact'], queryFn: fetchFact });
+    const dogResult = useQuery({ queryKey: ['dog'], queryFn: fetchDog });
+    const queryClient = useQueryClient();
 
-    const updateFact = async () => {
-        const response = await fetch("https://dogapi.dog/api/v2/facts?limit=1")
-        const json = await response.json();
-        console.log(json);
-
-        setDogFact(json.data[0].attributes.body);
-    }
-    const updateDog = async () => {
-        const response = await fetch("https://dog.ceo/api/breeds/image/random")
-        const json = await response.json();
-
-        setDogUrl(json.message);
-    }
     const updateAll = () => {
-        updateDog();
-        updateFact();
+        queryClient.invalidateQueries({ queryKey: ['fact'] });
+        queryClient.invalidateQueries({ queryKey: ['dog'] });
     }
-    useEffect(() => {
-        updateAll();
-    }, []);
     return <>
         <div className="dog-generator">
-            <DogImage imageUrl={dogUrl} />
-            <div>
-                <Factbox fact={dogFact} />
-                <Button updateFunction={updateAll} />
-                <LikeButton imageURL={dogUrl} />
-            </div>
+                {dogResult.isPending &&
+                    <span>Loading dog...</span>
+                }
+                {dogResult.isError &&
+                    <span>Error: {dogResult.error.message}</span>
+                }
+                {dogResult.isSuccess &&
+                    <DogImage imageUrl={dogResult.data} />
+                }
+                <div>
+                    {factResult.isLoading &&
+                        <div>Loading fact...</div>
+                    }
+                    {factResult.isError &&
+                        <div>Error: {factResult.error.message}</div>
+                    }
+                    {factResult.isSuccess &&
+                        <Factbox fact={factResult.data} />
+                    }
+                    {dogResult.isSuccess && factResult.isSuccess &&
+                        <>
+                        <Button updateFunction={updateAll} />
+                        <LikeButton imageURL={dogResult.data} />
+                        </>
+                    }
+                </div>
         </div>
     </>;
 }
