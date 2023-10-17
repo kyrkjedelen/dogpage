@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BreedGenerator.css"
+import LikeButton from "../../dog-generator/button/LikeButton.tsx";
 
 const makeInputToBreedUrl = (input: string): string => {
     const words = input.trim().toLowerCase().split(" ")
@@ -55,6 +56,7 @@ const DogGenerator:React.FC  = () => {
         <div className="input-container">
             <input id="breed-input" type="text" onChange={handleInputChange} />
             <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
+            <LikeButton imageURL={dogUrl} />
             {error !== "" && <p>{error}</p>}
         </div>
         {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
