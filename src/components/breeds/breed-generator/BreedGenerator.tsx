@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./BreedGenerator.css"
-import LikeButton from "C:/Users/julia/Documents/dogpage/src/components/dog-generator/button/LikeButton.tsx";
+import LikeButton from "../../dog-generator/button/LikeButton.tsx";
 
 const makeInputToBreedUrl = (input: string): string => {
     const words = input.trim().toLowerCase().split(" ")
@@ -52,21 +52,17 @@ const DogGenerator:React.FC  = () => {
         updateAll();
     }, []);
     return <>
-        <div className="breed-generator" >
-            <div>
-                { dogUrl !== "" &&
-                    <img src={dogUrl} />
-                }
-                { error !== "" &&
-                    <p>{error}</p>
-                }
-                <input type="text" onChange={handleInputChange}/>
-            </div>
-            <div className="buttons">
-                <button onClick={updateAll}>Click here to see more dog</button>
-                <LikeButton imageURL={dogUrl} />
-            </div>
+    <div className="breed-generator">
+        <div className="input-container">
+            <input id="breed-input" type="text" onChange={handleInputChange} />
+            <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
+            <LikeButton imageURL={dogUrl} />
+            {error !== "" && <p>{error}</p>}
         </div>
+        {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
+    </div>
     </>;
 }
 export default DogGenerator
+
+

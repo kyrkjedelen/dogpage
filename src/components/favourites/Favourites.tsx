@@ -26,7 +26,7 @@ const Favourites:React.FC = () => {
     };
     
     return <>
-        <main style={{ color: "black" }}>
+        <main className="main" style={{ color: "black" }}>
             <h1 >Favorites</h1>
             <RemoveAllButton removeAllDogs={removeAllDogs}/>
             {dogList.map((imageUrl: string, index: number) => (
