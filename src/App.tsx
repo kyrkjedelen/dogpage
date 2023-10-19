@@ -8,6 +8,7 @@ import About from "./components/about/About";
 import Breeds from "./components/breeds/Breeds";
 import Favourites from "./components/favourites/Favourites";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import NotFound from "./components/not-found/NotFound.tsx";
 
 const App:React.FC = () => {
   const queryClient = new QueryClient();
@@ -20,6 +21,7 @@ const App:React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/breeds" element={<Breeds />} />
           <Route path="/favourites" element={<Favourites />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         </QueryClientProvider>
         <Footer />
