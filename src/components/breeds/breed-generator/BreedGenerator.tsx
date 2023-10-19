@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./BreedGenerator.css"
 import LikeButton from "../../dog-generator/button/LikeButton.tsx";
+import BreedsOptions from "./BreedsOptions.tsx";
 
 const makeInputToBreedUrl = (input: string): string => {
     const words = input.trim().toLowerCase().split(" ")
@@ -15,7 +16,7 @@ const makeInputToBreedUrl = (input: string): string => {
     return new_string
 }
 
-const DogGenerator:React.FC  = () => {
+const DogGenerator: React.FC = () => {
     const [breedInputValue, setBreedInputValue] = useState<string>("");
     const [dogBreedUrl, setDogBreedUrl] = useState<string>("");
     const [dogUrl, setDogUrl] = useState<string>("");
@@ -30,7 +31,7 @@ const DogGenerator:React.FC  = () => {
             } else {
                 setDogUrl(json.message);
             }
-        } catch(e) {
+        } catch (e) {
             setDogUrl("")
             setError(String(e))
         }
@@ -40,7 +41,7 @@ const DogGenerator:React.FC  = () => {
         console.log(value)
         setBreedInputValue(value.trim().toLowerCase());
         setDogBreedUrl(makeInputToBreedUrl(value))
-      };
+    };
     const updateAll = () => {
         console.log("Click!")
         setError("")
@@ -51,16 +52,32 @@ const DogGenerator:React.FC  = () => {
     useEffect(() => {
         updateAll();
     }, []);
+
+    const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+        const value = event.target.value;
+        console.log(value);
+        setBreedInputValue(value.trim().toLowerCase());
+        setDogBreedUrl(makeInputToBreedUrl(value));
+        updateAll();
+    }
+
     return <>
-    <div className="breed-generator">
-        <div className="input-container">
-            <input id="breed-input" type="text" onChange={handleInputChange} />
-            <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
-            <LikeButton imageURL={dogUrl} />
-            {error !== "" && <p>{error}</p>}
+        <select name="selectedBreed" onChange={(event) => {handleSelectChange(event)}}>
+            {BreedsOptions.map(breed => (
+                <option key={breed.toLowerCase()} value={breed.toLowerCase()}>
+                    {breed}
+                </option>
+            ))}
+        </select>
+        <div className="breed-generator">
+            <div className="input-container">
+                <input id="breed-input" type="text" onChange={handleInputChange} />
+                <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
+                <LikeButton imageURL={dogUrl} />
+                {error !== "" && <p>{error}</p>}
+            </div>
+            {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
         </div>
-        {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
-    </div>
     </>;
 }
 export default DogGenerator
