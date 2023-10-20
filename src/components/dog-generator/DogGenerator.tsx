@@ -33,8 +33,8 @@ const DogGenerator:React.FC  = () => {
     return <>
         <div className="dog-generator">
             <DogImage imageUrl={dogUrl} />
-            <div>
-                <Factbox fact={dogFact} />
+            <div className="buttons">
+                <Factbox  fact={dogFact} />
                 <Button updateFunction={updateAll} />
                 <LikeButton imageURL={dogUrl} />
             </div>
