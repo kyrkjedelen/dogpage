@@ -7,7 +7,7 @@ interface DogImageProps {
 
 const DogImage: React.FC<DogImageProps> = ({ imageUrl, style} )  => {
     return <>
-        <img src={imageUrl} alt="Random dog." style={style} />
+        <img className="dog-image" src={imageUrl} alt="Random dog." style={style} />
     </>
 }
 
