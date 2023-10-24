@@ -8,8 +8,14 @@
     vertical-align: middle;
   }
 
-#SoMe img{
+
+#soMe i{
     width: 45px;
     height: 45px;
-    padding: 22.5px 15px;
+    padding: 20px 10px;
+    color: #15141A;
   }
+
+#soMe i:hover{
+  color: #78787a;
+}
