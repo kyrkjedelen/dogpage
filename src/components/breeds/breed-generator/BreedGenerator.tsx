@@ -19,20 +19,25 @@ const makeInputToBreedUrl = (input: string): string => {
 const DogGenerator: React.FC = () => {
     const [breedInputValue, setBreedInputValue] = useState<string>("");
     const [dogBreedUrl, setDogBreedUrl] = useState<string>("");
-    const [dogUrl, setDogUrl] = useState<string>("");
+    //const [dogUrl, setDogUrl] = useState<string>("");
+    const [dogUrls, setDogUrls] = useState<string[]>([]);
     const [error, setError] = useState<string>("");
 
     const updateDog = async () => {
         try {
-            const response = await fetch(`https://dog.ceo/api/breed/${dogBreedUrl}/images/random`)
-            const json = await response.json();
-            if (json.code === 404 || !json) {
-                throw `The breed ${breedInputValue} doesn't exist.`
-            } else {
-                setDogUrl(json.message);
+            const newDogUrls = []
+            for (let i=0; i < 10; i++){
+                const response = await fetch(`https://dog.ceo/api/breed/${dogBreedUrl}/images/random`)
+                const json = await response.json();
+                if (json.code === 404 || !json) {
+                    throw `The breed ${breedInputValue} doesn't exist.`
+                }
+                newDogUrls.push(json.message);
             }
+            setDogUrls(newDogUrls);
+
         } catch (e) {
-            setDogUrl("")
+            setDogUrls([])
             setError(String(e))
         }
     }
@@ -61,7 +66,7 @@ const DogGenerator: React.FC = () => {
         updateAll();
     }
 
-    return <>
+    return (<>
         <select name="selectedBreed" onChange={(event) => {handleSelectChange(event)}}>
             {BreedsOptions.map(breed => (
                 <option key={breed.toLowerCase()} value={breed.toLowerCase()}>
@@ -69,17 +74,28 @@ const DogGenerator: React.FC = () => {
                 </option>
             ))}
         </select>
+        
+        <div className="dog-images">
+        {dogUrls.map((url, index) => (
+                <div className="dog">
+                    <img key={index} src={url} alt={`Dog ${index}`} />
+                    <LikeButton imageURL={dogUrls[index]}/>
+                </div>
+        ))}
+        </div>
+        
         <div className="breed-generator">
             <div className="input-container">
                 <input id="breed-input" type="text" onChange={handleInputChange} />
-                <button id="breed-button" onClick={updateAll}>Trykk her for å se mer dog</button>
-                <LikeButton imageURL={dogUrl} />
+                <button id="breed-button" onClick={updateAll}>Load more Dogs</button>
                 {error !== "" && <p>{error}</p>}
             </div>
-            {dogUrl !== "" && <img src={dogUrl} alt="Dog" />}
+            
         </div>
-    </>;
-}
+    </>
+    );
+    
+};
 export default DogGenerator
 
 
