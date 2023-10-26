@@ -29,7 +29,10 @@
 
 #breed-input{
     border-radius: 0.5rem;
-    background-color: rgb(169, 169, 169);
+    background-color: rgb(202, 202, 202);
+    font-size: 14px;
+    color: #15141A;
+    text-align: center;
 }
 
 #breed-button {

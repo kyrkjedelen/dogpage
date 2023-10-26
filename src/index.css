@@ -15,6 +15,11 @@
   z-index: 1;
 }
 
+.dark-mode #header {
+  background-color: darkgray; /* Or your preferred dark mode color */
+  color: white;
+}
+
 
 a {
   font-weight: 500;
@@ -49,9 +54,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;

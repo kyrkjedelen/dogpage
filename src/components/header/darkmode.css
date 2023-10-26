@@ -1,0 +1,43 @@
+.dark-mode{
+    background-color: rgba(82, 82, 86, 0.845);
+    color: #ccc;
+    
+  }
+
+body.dark-mode #header {
+    background-color: #15141A;
+  }
+
+
+body.dark-mode #navbar-right a{
+    color: #ccc;
+}
+body.dark-mode #title {
+    color: #ccc;
+}
+
+body.dark-mode #logo {
+    color: #ccc;
+}
+
+body.dark-mode #footer{
+    background-color: #15141A;
+}
+
+body.dark-mode #soMe i{
+    color: #ccc;
+}
+
+body.dark-mode .input-container{
+    background-color: #ccc;
+}
+
+body.dark-mode #breed-input {
+    background-color: white;
+    color: #15141A;
+    font-size: 14px;
+}
+
+body.dark-mode #factbox {
+    color: #ccc;
+}
