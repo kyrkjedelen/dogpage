@@ -4,20 +4,14 @@
     position: relative; 
     justify-content: center; 
     width: 100vw; 
-    height: 100vh; 
+    height: 100vh;
+    pointer-events: none;
+    transform: translateY(-10%);
 }
 
-/* .breed-generator img {
-    position: absolute;
-    top: 0;
-    align-items: center;
-    height: 50vh;
-    object-fit: cover; 
-    z-index: 0; 
-    border-radius: 0.5rem;
-    padding-block: 20px;
-} */
-
+.breed-generator-empty {
+    transform: translateY(-80%);
+  }
 
 .input-container {
     display: flex; 
@@ -29,6 +23,7 @@
     padding: 1rem; 
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgb(0, 0, 0);
+    pointer-events: all;
 }
 
 #breed-input{
@@ -41,6 +36,7 @@
     text-align: center;
     border-radius: 1rem;
     font-size: 18px;
+    pointer-events: all;
 }
 
 #breed-button:hover{
@@ -65,7 +61,6 @@
     margin: 10px;
     height: 500px;
     justify-content: center;
-    /* align-items: center; */
 }
 
 .dog img{

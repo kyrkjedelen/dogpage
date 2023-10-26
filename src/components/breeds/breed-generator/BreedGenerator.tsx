@@ -19,7 +19,6 @@ const makeInputToBreedUrl = (input: string): string => {
 const DogGenerator: React.FC = () => {
     const [breedInputValue, setBreedInputValue] = useState<string>("");
     const [dogBreedUrl, setDogBreedUrl] = useState<string>("");
-    //const [dogUrl, setDogUrl] = useState<string>("");
     const [dogUrls, setDogUrls] = useState<string[]>([]);
     const [error, setError] = useState<string>("");
 
@@ -83,14 +82,13 @@ const DogGenerator: React.FC = () => {
                 </div>
         ))}
         </div>
-        
-        <div className="breed-generator">
+
+        <div className={`breed-generator ${dogUrls.length === 0 ? "breed-generator-empty" : ""}`}>
             <div className="input-container">
                 <input id="breed-input" type="text" onChange={handleInputChange} />
                 <button id="breed-button" onClick={updateAll}>Load more Dogs</button>
                 {error !== "" && <p>{error}</p>}
             </div>
-            
         </div>
     </>
     );
