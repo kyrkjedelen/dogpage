@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./BreedGenerator.css"
 import LikeButton from "../../dog-generator/button/LikeButton.tsx";
 import BreedsOptions from "./BreedsOptions.tsx";
+
 
 const makeInputToBreedUrl = (input: string): string => {
     const words = input.trim().toLowerCase().split(" ")
@@ -39,11 +40,25 @@ const DogGenerator: React.FC = () => {
             setDogUrls([])
             setError(String(e))
         }
+        
+        const response = await fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+        const json = await response.json();
+        if (json.code == 404) {
+            throw Error(`"${breed}" breed is not in API.`)
+        }
+        if (json.status == "error") {
+            throw Error(`Unkown error with API happened.`)
+        }
+        return json.message;
+    }
+    const breedQuery = useQuery({ queryKey: ['breed-img', dogBreedUrl], queryFn: updateDog, retry: false });
+    const queryClient = useQueryClient();
+
+    const refreshImage = () => {
+        queryClient.invalidateQueries({ queryKey: ['breed-img'] });
     }
     const handleInputChange = (event: React.FormEvent<HTMLInputElement>) => {
-        const value = (event.target as HTMLInputElement).value
-        console.log(value)
-        setBreedInputValue(value.trim().toLowerCase());
+        const value = (event.target as HTMLInputElement).value;
         setDogBreedUrl(makeInputToBreedUrl(value))
     };
     const updateAll = () => {
@@ -94,6 +109,7 @@ const DogGenerator: React.FC = () => {
     );
     
 };
+
 export default DogGenerator
 
 

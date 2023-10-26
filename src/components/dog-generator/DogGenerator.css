@@ -19,6 +19,7 @@
     flex-direction: column;
     gap: 1rem;
     align-items: center;
+    margin-right: 4%;
 }
 
 @media (max-width: 900px) {
@@ -29,4 +30,14 @@
     .dog-generator {
         flex-direction: column;
     }    
+}
+
+
+.dog-image {
+    width: 150px;
+    height: auto;
+    margin: 2% 9%;
+    border-style: solid;
+    border-color: #15141A;
+    border-width: 5px;
 }
