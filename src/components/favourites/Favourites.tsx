@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import DogImage from "../dog-image/DogImage.tsx";
-import "./Favourites.css";
 import RemoveAllButton from "../remove-all-button/RemoveAllButton.tsx";
 import { removeDog, getAllDogs, DOG_UPDATE_KEY } from "../localstorage/FavoriteStorage.tsx";
 

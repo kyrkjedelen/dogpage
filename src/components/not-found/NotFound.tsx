@@ -1,4 +1,3 @@
-import "./NotFound.css"
 
 const NotFound:React.FC = () => {
     return (
