@@ -1,29 +1,24 @@
 import React from "react"
-import './App.css'
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
-import DogGenerator from './components/dog-generator/DogGenerator';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import About from "./components/about/About";
-import Breeds from "./components/breeds/Breeds";
-import Favourites from "./components/favourites/Favourites";
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
+import './App.css'
+import Footer from './components/footer/Footer.tsx';
+import Header from './components/header/Header.tsx';
+import About from "./components/about/About.tsx";
+import Favourites from "./components/favourites/Favourites.tsx";
 import NotFound from "./components/not-found/NotFound.tsx";
+import IndexPage from "./components/index-page/IndexPage.tsx";
 
 const App:React.FC = () => {
-  const queryClient = new QueryClient();
   return <>
       <BrowserRouter>
         <Header />
-        <QueryClientProvider client={queryClient}>
         <Routes>
-          <Route path="/" element={<DogGenerator />} />
+          <Route path="/" element={<IndexPage />} />
           <Route path="/about" element={<About />} />
-          <Route path="/breeds" element={<Breeds />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-        </QueryClientProvider>
         <Footer />
       </BrowserRouter>
     </>;

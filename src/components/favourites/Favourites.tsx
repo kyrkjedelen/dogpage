@@ -1,46 +1,31 @@
 import React, { useEffect, useState } from "react";
-import DogImage from "../dog-generator/dog-image/DogImage.tsx";
-import "./Favourites.css"
-import RemoveAllButton from "../dog-generator/button/RemoveAllButton.tsx";
-
+import DogImage from "../dog-image/DogImage.tsx";
+import "./Favourites.css";
+import RemoveAllButton from "../remove-all-button/RemoveAllButton.tsx";
+import { removeDog, getAllDogs, DOG_UPDATE_KEY } from "../localstorage/FavoriteStorage.tsx";
 
 const Favourites:React.FC = () => {
     const [dogList, setDogList] = useState<string[]>([]);
+    const updateDogList = () => {
+        setDogList(getAllDogs());
+    }
 
+    // Update favorites list at load, and when localStorage updates.
     useEffect(() => {
-        const dogListJSON = localStorage.getItem("dog");
-        const initialDogList = dogListJSON ? JSON.parse(dogListJSON) : [];
-        setDogList(initialDogList);
+        updateDogList()
     }, []);
-
-    const removeDog = (index: number) => {
-        const updatedDogList = [...dogList];
-        updatedDogList.splice(index,1);
-        setDogList(updatedDogList);
-        localStorage.setItem("dog", JSON.stringify(updatedDogList));
-    };
-
-    const removeAllDogs = () => {
-        setDogList([]);
-        localStorage.removeItem("dog");
-    };
+    window.addEventListener(DOG_UPDATE_KEY, () => {
+        updateDogList()
+    });
     
     return <>
         <main className="main" style={{ color: "black" }}>
             <h1 >Favorites</h1>
-            <RemoveAllButton removeAllDogs={removeAllDogs}/>
-            {dogList.map((imageUrl: string, index: number) => (
+            <RemoveAllButton />
+            {dogList.map((url: string) => (
                 <div className="dogImageItem">
-                    <DogImage
-                        key={index} imageUrl={imageUrl}
-                        style={{
-                            width: "250px",
-                            height: "auto",
-                            marginLeft: "160px",
-                            marginRight: "20px"
-                        }} 
-                    />
-                    <button id="removeDog" onClick={() => removeDog(index)}>
+                    <DogImage imgUrl={url} hasLikeButton={false} />
+                    <button className="remove-dog" onClick={() => removeDog(url)}>
                         Remove dog
                     </button>
                 </div>

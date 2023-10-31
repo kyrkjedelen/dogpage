@@ -1,8 +1,7 @@
-
+import React from 'react';
 import './Footer.css'
 
-function Footer() {
-    
+const Footer: React.FC = () => {
     return(
         <footer id = 'footer'>
             <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"></link>
@@ -25,4 +24,4 @@ function Footer() {
     )
 }
 
-export default Footer
+export default Footer;
