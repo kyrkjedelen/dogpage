@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import DogImage from "../dog-image/DogImage.tsx";
 import RemoveAllButton from "../remove-all-button/RemoveAllButton.tsx";
 import { removeDog, getAllDogs, DOG_UPDATE_KEY } from "../localstorage/FavoriteStorage.tsx";
+import styles from "./Favorites.module.css";
 
 const Favourites:React.FC = () => {
     const [dogList, setDogList] = useState<string[]>([]);
@@ -18,17 +19,19 @@ const Favourites:React.FC = () => {
     });
     
     return <>
-        <main className="main" style={{ color: "black" }}>
+        <main className={styles.main}>
             <h1 >Favorites</h1>
             <RemoveAllButton />
-            {dogList.map((url: string) => (
-                <div className="dogImageItem">
-                    <DogImage imgUrl={url} hasLikeButton={false} />
-                    <button className="remove-dog" onClick={() => removeDog(url)}>
-                        Remove dog
-                    </button>
-                </div>
-            ))}
+            <section>
+                {dogList.map((url: string) => (
+                    <div className="dogImageItem">
+                        <DogImage imgUrl={url} hasLikeButton={false} />
+                        <button className="remove-dog" onClick={() => removeDog(url)}>
+                            Remove dog
+                        </button>
+                    </div>
+                ))}
+            </section>
         </main>
     </>
 }
