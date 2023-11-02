@@ -38,13 +38,13 @@ const fetchDogWithBreed: QueryFunction<string,QueryKey> = async ({queryKey}) => 
     return json.message;
 }
 
-export const returnImageQuery = (breed?: string): UseQueryResult => {
+export const returnImageQuery = (key: string, breed?: string): UseQueryResult => {
     let query: UseQueryResult;
     if (breed === undefined) {
-        query = useQuery({ queryKey: [IMAGE_QUERY_KEY], queryFn: fetchDog });
+        query = useQuery({ queryKey: [IMAGE_QUERY_KEY + key], queryFn: fetchDog });
     } else {
         let breedUrl = makeInputToBreedUrl(breed);
-        query = useQuery({ queryKey: [IMAGE_QUERY_KEY, breedUrl], queryFn: fetchDogWithBreed });
+        query = useQuery({ queryKey: [IMAGE_QUERY_KEY + key, breedUrl], queryFn: fetchDogWithBreed });
     }
     return query;
 }

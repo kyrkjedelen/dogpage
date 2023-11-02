@@ -7,6 +7,7 @@ import About from "./components/about/About.tsx";
 import Favourites from "./components/favourites/Favourites.tsx";
 import NotFound from "./components/not-found/NotFound.tsx";
 import IndexPage from "./components/index-page/IndexPage.tsx";
+import Breeds from "./components/breeds/Breeds.tsx";
 
 const App:React.FC = () => {
   return <>
@@ -16,7 +17,7 @@ const App:React.FC = () => {
           <Route path="/" element={<IndexPage />} />
           <Route path="/about" element={<About />} />
           <Route path="/favourites" element={<Favourites />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/breeds" element={<Breeds />} />
         </Routes>
         <Footer />
       </BrowserRouter>
