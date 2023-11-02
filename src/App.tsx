@@ -20,6 +20,7 @@ const App:React.FC = () => {
           <Route path="/about" element={<About />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/breeds" element={<Breeds />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
