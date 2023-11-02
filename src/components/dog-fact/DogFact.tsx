@@ -30,9 +30,6 @@ const DogFact: React.FC<DogFactProps>  = ({fact, apiQuery}) => {
                 }
             </>
         }
-        { apiQuery !== undefined && typeof apiQuery.data !== 'string' &&
-            <p>The api query was wrong in some way.</p>
-        }
     </>;
 }
 export default DogFact;

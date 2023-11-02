@@ -46,9 +46,6 @@ const DogImage: React.FC<DogImageProps>  = ({ imgUrl, apiQuery, hasLikeButton = 
             }
         </>
         }
-        { apiQuery !== undefined && typeof apiQuery.data !== 'string' &&
-            <p>The api query was wrong in some way.</p>
-        }
     </>;
 }
 export default DogImage

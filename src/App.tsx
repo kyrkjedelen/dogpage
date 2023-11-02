@@ -8,6 +8,8 @@ import Favourites from "./components/favourites/Favourites.tsx";
 import NotFound from "./components/not-found/NotFound.tsx";
 import IndexPage from "./components/index-page/IndexPage.tsx";
 
+import "./App.css";
+
 const App:React.FC = () => {
   return <>
       <BrowserRouter>
