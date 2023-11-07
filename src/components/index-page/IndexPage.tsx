@@ -7,7 +7,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import styles from "./IndexPage.module.css";
 
 const IndexPage: React.FC = () => {
-    const imageQuery = returnImageQuery("terrier");
+    const imageQuery = returnImageQuery("");
     const factQuery = returnFactQuery();
     const queryClient = useQueryClient();
     const updateDog = () => {
