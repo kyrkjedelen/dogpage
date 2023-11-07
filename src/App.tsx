@@ -16,11 +16,11 @@ const App:React.FC = () => {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/favourites" element={<Favourites />} />
-          <Route path="/breeds" element={<Breeds />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/dogpage" element={<IndexPage />} />
+          <Route path="/dogpage/about" element={<About />} />
+          <Route path="/dogpage/favourites" element={<Favourites />} />
+          <Route path="/dogpage/breeds" element={<Breeds />} />
+          <Route path="/dogpage*" element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>
