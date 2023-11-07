@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DogImage from "../../dog-image/DogImage.tsx";
 import { returnImageQuery, IMAGE_QUERY_KEY } from "../../apis/ImageApi.tsx";
 import { UseQueryResult, useQueryClient } from "@tanstack/react-query";
@@ -29,7 +29,7 @@ const BreedGenerator: React.FC = () => {
 
 
     const updateDog = () => { 
-        imageQueries.forEach((query, index) => {
+        imageQueries.forEach((index) => {
             queryClient.invalidateQueries({ queryKey: [IMAGE_QUERY_KEY + index]})
 
         }
