@@ -6,7 +6,6 @@ import BreedsOptions from "./BreedsOptions.tsx";
 import style from "./BreedGenerator.module.css";
 
 const BreedGenerator: React.FC = () => {
-    
     const queryClient = useQueryClient();
     const [breed, setBreed] = useState("");
     const imageQueries: UseQueryResult[] = [];
@@ -29,7 +28,8 @@ const BreedGenerator: React.FC = () => {
 
 
     const updateDog = () => { 
-        imageQueries.forEach((index) => {
+        imageQueries.forEach((query, index) => {
+            query;
             queryClient.invalidateQueries({ queryKey: [IMAGE_QUERY_KEY + index]})
         }
         )
