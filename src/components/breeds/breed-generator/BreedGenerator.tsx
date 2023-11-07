@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DogImage from "../../dog-image/DogImage.tsx";
 import { returnImageQuery, IMAGE_QUERY_KEY } from "../../apis/ImageApi.tsx";
 import { UseQueryResult, useQueryClient } from "@tanstack/react-query";
@@ -11,7 +11,7 @@ const BreedGenerator: React.FC = () => {
     const [breed, setBreed] = useState("");
     const imageQueries: UseQueryResult[] = [];
 
-    for (let i = 1; i <= 10; i++){
+    for (let i = 1; i <= 9; i++){
         imageQueries.push(returnImageQuery(i.toString(), breed));
     }
 
@@ -31,19 +31,12 @@ const BreedGenerator: React.FC = () => {
     const updateDog = () => { 
         imageQueries.forEach((query, index) => {
             queryClient.invalidateQueries({ queryKey: [IMAGE_QUERY_KEY + index]})
-
         }
-
         )
     }
 
     return (
     <div className={style.breedsGenerator}>
-        <div className="dog-images">
-            {imageQueries.map((query, index) => (
-                <DogImage key={index} apiQuery={query} />
-            ))}
-        </div>
         <div className={style.inputContainer}>
             <input id="breed-input" type="text" onChange={handleBreedChange} />
             <select name="selectedBreed" onChange={(event) => {handleSelectChange(event)}}>
@@ -54,6 +47,14 @@ const BreedGenerator: React.FC = () => {
                 ))}
             </select>
             <button id="breed-button" onClick={updateDog} >Load more Dogs</button>
+        </div>
+
+        <div className={style.dogImages}>
+            {imageQueries.map((query, index) => (
+                <div>
+                <DogImage key={index} apiQuery={query} />
+                </div>
+            ))}
         </div>
     </div>
     )
